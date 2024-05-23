@@ -43,9 +43,9 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
+          <Link href={"/"} className="btn btn-ghost text-xl">
             <Image className="w-40" src={logo} alt="shine on logo" />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
