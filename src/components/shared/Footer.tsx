@@ -1,19 +1,26 @@
-import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="">
       <footer className="footer p-10 bg-base-300 text-base-content">
         <nav>
           <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Categories</a>
-          <a className="link link-hover">Brands</a>
+          <Link href={"/categories"} className="link link-hover">
+            Categories
+          </Link>
+          <Link href={"/products?trending=true"} className="link link-hover">
+            Trending Products
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact Us</a>
-          <a className="link link-hover">Customer Care</a>
+          <Link href={"/contact-us"} className="link link-hover">
+            Contact Us
+          </Link>
+          <Link href={"/customer-care"} className="link link-hover">
+            Customer Care
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>

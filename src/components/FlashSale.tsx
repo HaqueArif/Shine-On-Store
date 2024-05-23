@@ -1,7 +1,7 @@
-import { TProduct } from "@/types/types";
+import { TProduct, data } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
-import FlashSaleTimer from "../FlashSaleTimer";
+import FlashSaleTimer from "./FlashSaleTimer";
 
 const FlashSale = async () => {
   const res = await fetch("http://localhost:3200/products", {
@@ -9,13 +9,15 @@ const FlashSale = async () => {
       revalidate: 30,
     },
   });
-  const products = await res.json();
-  const flashSaleProducts = products.filter(
+  const data = await res.json();
+  const products = data[0]?.products;
+
+  const flashSaleProducts = products?.filter(
     (product: TProduct) => product.flashSale
   );
 
   return (
-    <div className="my-40">
+    <div className="py-40">
       <div className="flex justify-between mb-2">
         <h1 className="font-bold text-4xl "> Flash sale</h1>
         <Link href="/flash-sale">
@@ -30,7 +32,7 @@ const FlashSale = async () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6   gap-1 ">
-        {flashSaleProducts.slice(0, 6).map((product: TProduct) => (
+        {flashSaleProducts?.slice(0, 6).map((product: TProduct) => (
           <div
             key={product._id}
             className=" card-compact max-w-96 bg-base-100  hover:bg-slate-50"
@@ -59,9 +61,6 @@ const FlashSale = async () => {
               </div>
               <p>{product.name}</p>
               <p>{product.description.slice(0, 50)}...</p>
-              {/* <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div> */}
             </div>
           </div>
         ))}

@@ -6,8 +6,9 @@ import Link from "next/link";
 
 const page = async () => {
   const res = await fetch("http://localhost:3200/products");
-  const products = await res.json();
-  const flashSaleProducts = products.filter(
+  const data = await res.json();
+  const products = data[0]?.products;
+  const flashSaleProducts = products?.filter(
     (product: TProduct) => product.flashSale
   );
 
@@ -34,7 +35,7 @@ const page = async () => {
             <FlashSaleTimer />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6  gap-1 pb-40">
-            {flashSaleProducts.map((product: TProduct) => (
+            {flashSaleProducts?.map((product: TProduct) => (
               <div
                 key={product._id}
                 className=" card-compact max-w-96 mx-auto bg-base-100 hover:bg-slate-50"
@@ -63,9 +64,6 @@ const page = async () => {
                   </div>
                   <p>{product.name}</p>
                   <p>{product.description.slice(0, 50)}...</p>
-                  {/* <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div> */}
                 </div>
               </div>
             ))}
