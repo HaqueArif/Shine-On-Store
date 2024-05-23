@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+// generateStaticParams
 export const generateStaticParams = async () => {
   const res = await fetch("http://localhost:3200/products");
   const data = await res.json();
