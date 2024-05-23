@@ -10,14 +10,6 @@ import {
 import Image from "next/image";
 
 // generateStaticParams
-export const generateStaticParams = async () => {
-  const res = await fetch("http://localhost:3200/products");
-  const data = await res.json();
-  const products = data[0]?.products;
-  return products.slice(0, 10).map((product: TProduct) => ({
-    productId: product.id,
-  }));
-};
 
 const SingleProductPage = async ({ params }: ProductId) => {
   console.log(params.productId);
