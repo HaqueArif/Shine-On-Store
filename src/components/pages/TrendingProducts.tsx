@@ -4,7 +4,7 @@ import Link from "next/link";
 import TrendingProductCard from "../TrendingProduct";
 
 const TrendingProducts = async () => {
-  const res = await fetch("http://localhost:3200/products", {
+  const res = await fetch("https://shine-on-server-five.vercel.app/products", {
     next: {
       revalidate: 30,
     },

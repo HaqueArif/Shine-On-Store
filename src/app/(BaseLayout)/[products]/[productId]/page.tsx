@@ -13,7 +13,7 @@ import Image from "next/image";
 
 const SingleProductPage = async ({ params }: ProductId) => {
   console.log(params.productId);
-  const res = await fetch("http://localhost:3200/products");
+  const res = await fetch("https://shine-on-server-five.vercel.app/products");
   const data = await res.json();
   const products = data[0]?.products;
   const filteredProducts = products?.find(

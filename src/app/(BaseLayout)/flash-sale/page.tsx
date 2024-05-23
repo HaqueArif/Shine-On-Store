@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const page = async () => {
-  const res = await fetch("http://localhost:3200/products");
+  const res = await fetch("https://shine-on-server-five.vercel.app/products");
   const data = await res.json();
   const products = data[0]?.products;
   const flashSaleProducts = products?.filter(

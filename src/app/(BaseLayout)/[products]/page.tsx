@@ -5,7 +5,7 @@ import Image from "next/image";
 import React from "react";
 
 const AllProductsPage = async () => {
-  const res = await fetch("http://localhost:3200/products", {
+  const res = await fetch("https://shine-on-server-five.vercel.app/products", {
     next: {
       revalidate: 30,
     },
